@@ -9,12 +9,12 @@ export const WatchList = () => {
         <div className="container">
             <div className="header">
                 <h1 className="heading">My Watchlist</h1>
-
+                {/* Function to show how many movies are added */}
                 <span className="count-pill">
                     {watchlist.length} {watchlist.length === 1 ? "Movie" : "Movies"}
                 </span>
             </div>
-
+            {/* If else statement */}
             {watchlist.length > 0 ? (
                 <div className="movie-grid">
                 {watchlist.map(movie => (

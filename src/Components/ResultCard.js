@@ -1,16 +1,18 @@
 import React, {useContext} from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 
-
+// UseContext function being used to access GlobalContext component
 export const ResultCard = ({movie}) => {
     const { addMovieToWatchList, addMovieToWatched, watchlist, watched } = useContext(GlobalContext)
     
+    // Funtion to find if the movie id is being used
     let storedMovie = watchlist.find(o => o.id === movie.id)
     let storedMovieWatched = watched.find((o) => o.id === movie.id)
 
+    // Function to disable the buttons once clicked on
     const watchlistDisabled = storedMovie ? true : storedMovieWatched ? true : false
     const watchedDisabled = storedMovieWatched ? true : false
-
+// Function to get poster images and movie titles
     return (
         <div className="result-card">
             <div className="poster-wrapper">
@@ -21,11 +23,13 @@ export const ResultCard = ({movie}) => {
                     <div className="filler-poster"></div>
                 )}
             </div>
+            {/* Function to add get movie title and release date displayed in results */}
             <div className="info">
                 <div className="header">
                     <h3 className="title">{movie.title}</h3>
                     <h4 className="release-date">{movie.release_date ? movie.release_date.substring(0, 4) : "-"}</h4>
                 </div>
+                {/* Adding buttons and onClick */}
                 <div className="controls">
                     <button className="btn"
                     disabled={watchlistDisabled}
@@ -39,15 +43,3 @@ export const ResultCard = ({movie}) => {
         </div>
     )
 }
-
-// passing movie as a prop so we can access it later in the code
-// this makes it so we have access to the add movie watchlist action we have created, so we can then tie it to the button we wil create
-// we are wanting to make it so that you can only add a movie once to the watchlist, not multiple times
-// searching watchlist called out above to see if any objects have an equal id
-// o is short for object
-// if there is something returned then it will be true then disable it, but if theres nothing there then it will be false
-/* containing our poster */
-// if tere is no image to display we will just get a blank div
-/* Adding text so that the title of the movie is displayed and made it so the year the movie is released rather than the year, day and month. Used substring to get the year specifically. Added and or/else so that if a  movie doesn't have a specifc year the it will show a - */
-/* added button to be able to add the movie to the watchlist */
-/* also added a disabled action so when the button is clicked it is grayed out and cannot be clicked again */

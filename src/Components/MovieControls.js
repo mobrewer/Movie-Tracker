@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 
+// Adding funtionality to icons, importing GlobalContext.js functionality 
 export const MovieControls = ({movie, type}) => {
     const {removeMovieFromWatchlist, addMovieToWatched, moveToWatchlist, removeFromWatched} = useContext(GlobalContext)
     return (

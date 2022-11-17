@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-// Creating links 
+// Creating links for each page
  export const Header = () => {
   return (
     <header>
@@ -27,5 +27,4 @@ import { Link } from "react-router-dom"
   )
 }
 
-/* this is linking to the homepage which is watchlist */
 

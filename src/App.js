@@ -19,7 +19,7 @@ function App() {
 
     <Router>
         <Header />
-{/* These routes are what is needed in order to click on a page and it link to the corresponding page */}
+{/* Function for routes to be used */}
         <Routes>
             <Route exact path="/" element = { <WatchList />}/>
 

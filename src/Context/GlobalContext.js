@@ -1,7 +1,7 @@
-import React, {createContext, useRouter, useEffect, useReducer} from "react";
+import React, {createContext, useEffect, useReducer} from "react";
 import AppReducer from "./AppReducer";
 
-
+// setting initial state
 let initialState = {
     watchlist: [],
     watched: [],    
@@ -9,22 +9,22 @@ let initialState = {
 
 export const GlobalContext = createContext(initialState)
 
-
+// Using Reducer function to use dispatch function later on
  export const GlobalProvider = props => {
     const [state, dispatch] = useReducer(AppReducer, initialState)
 
-
+// Local storage function to keep save which movies have been selected
 localStorage.getItem("watchlist") ? initialState.watchlist = JSON.parse(localStorage.getItem("watchlist")) : initialState.watchlist = []
 localStorage.getItem("watched") ? initialState.watched = JSON.parse(localStorage.getItem("watched")) : initialState.watched = []
 
-
-
+// Using useEffect fucntion to setItem
     useEffect(() => {
         localStorage.setItem("watchlist", JSON.stringify(state.watchlist))
         localStorage.setItem("watched", JSON.stringify(state.watched))
     }, [state])
 
-   
+// Action functions imported from AppReducer
+// Dispatch function to trigger state change
     const addMovieToWatchList = (movie) => {
         dispatch({type: "ADD_MOVIE_TO_WATCHLIST", payload: movie})
     }
@@ -45,6 +45,7 @@ localStorage.getItem("watched") ? initialState.watched = JSON.parse(localStorage
         dispatch({type: "REMOVE_FROM_WATCHED", payload: id})
     }
     
+    // Wrapping in provider so gloabl context can be used
     return (
         <GlobalContext.Provider value={{
             watchlist: state.watchlist, 
@@ -59,16 +60,4 @@ localStorage.getItem("watched") ? initialState.watched = JSON.parse(localStorage
         </GlobalContext.Provider>
     )
 }
-
-// set up intial state
-// setting up empty arrays because we want out movies to be set up as arrays
-// added local storage here so that it checks to see if there is anything in the local storage in wachlist or watched
-
-// creating context, exporting so we can use it later 
-// provider components, this makes it so we cab access the global context from other variables
- // use effect is triggered whenver the state is changed in our provider, so whenever this is triggered we want it saved to our local storage
-
- // actions, providing the movie data, dispatching a type, payload is the movie data
-// using global provide to wrap it around all other components so they can use the global context
-    // adding watchlist etc... so we can access it in this 'store' where we have stored this data
 

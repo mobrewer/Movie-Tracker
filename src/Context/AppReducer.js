@@ -1,4 +1,6 @@
 export default (state, action) => {
+    // Using swtich case function for conditional rendering based on states
+    // Functions to add functionality to icons are here, then imported to GlobalContext
     switch(action.type) {
         case "ADD_MOVIE_TO_WATCHLIST":
             return {
@@ -33,8 +35,4 @@ export default (state, action) => {
             return state
     }
 }
-
-// reducer is a function that returns some state data, it describes how a state is transfered to the next state
-// we want to return the existing state, then make changes to it in terms of the watchlist
-// we are creating new array and passing movie data payload, then spreading the original state. This sould then add the movie to the existing state
 
