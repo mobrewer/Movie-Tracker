@@ -17,6 +17,7 @@ export const Add = () => {
             // If else statememt to catch errors if any
             if(!data.errors) {
                 setResults(data.results)
+                console.log(data.results);
             } else {
                 setResults([])
             }
