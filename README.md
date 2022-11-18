@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+# Project Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Project Description
 
-In the project directory, you can run:
+This app helps keep track of movies you are wanting to watch by giving you the ability to search and add movies to a Watch List. Once you have watched those movies, you have the option to moves the movies from your watch list to your WATCHED list. This way you can stay on top of your movie watching!
 
-### `npm start`
+## Project Links
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [GitHub Repo](https://github.com/mobrewer/Movie-Tracker)
+- [Movie Tracker](https://movie-tracker-zakt-j68dvj4az-mobrewer.vercel.app/)
+- [Demo Recording]()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Wireframes & React Component Hierarchy
 
-### `npm test`
+- [Wireframes](https://whimsical.com/getting-started-boards-T8L9ob1vKmmxAvFVn3DW5e)
+-  First wireframe is of the watch list page, here you will be able to find all the movies that are wanting to be watched
+-  Second wireframe is of the watched page, here you will find all the movies you have already watched and moved from your watch list to the watched
+-  Third wireframe is of the add page, here you will be able to search movies and add them to your watch list page or your watched page.  
+- [React Architecture](https://whimsical.com/getting-started-boards-T8L9ob1vKmmxAvFVn3DW5e)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### MVP EXAMPLE
+- Found and used an external API
+- Page is interactive
+- Is a react app
 
-### `npm run build`
+#### PostMVP EXAMPLE
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Added local storage
+- Added icons with functionality to add, remove and move movies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Component | Description | 
+| --- | :---: |  
+| App | This will pull data passed into it and include React Router| 
+| Header | This will display the header, includes the links to their pages | 
+| Add | This will fetch the API data, display the search bar, map function to find movies based on input |
+| MovieCard | Displays the poster image and title based on input |
+| MovieControls | Displays the icons, has onClick function |
+| ResultCard | Displays buttons to add to watch or watched list, function to disable buttons after pressed, displays release date |
+| Watched | Displays movies added to watched list, displays amount of movies added |
+| WatchList | Displays movies added to watch list, displays amount of movies added |
+| AppReducer | Functions for icons on the poster |
+| GloablContext | Contains local storage to save what has been clicked, removed, moved. Used to be passed to most components |
 
-### `npm run eject`
+## Time Frames
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Time frames are also key in the development cycle.  You have limited time to code all phases of the project.  Your estimates can then be used to evaluate project possibilities based on time needed and the actual time you have before the project must be submitted. It's always best to pad the time by a few hours so that you account for the unknown so add an additional hour or two to each component to play it safe. 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+| Component | Priority | Estimated Time | Time Invested | Actual Time |
+| --- | :---: |  :---: | :---: | :---: |
+| Working with API | H | 3hrs| 4hrs | 4hrs |
+| Links and Routes | H | 3.5hrs| 2hrs | 2hrs |
+| Button Functionality | M/H | 2hrs| 3hrs | 3hrs |
+| Context | H | 3.5hrs | 4.5hrs | 4.5hrs |
+| Styling | H | 2 hrs | 3.5hrs| 3.5hrs |
+| Total | | 14hrs| 17hrs | 17hrs |
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Additional Libraries
+ Use this section to list all supporting libraries and their role in the project such as Axios, ReactStrap, D3, Bootstrap, Tailwind CSS, etc. 
+ - React Router, allows to change the browser URL
+ - Font-awesone for the icons
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Code Snippet
 
-## Learn More
+This gave the functionality to the icons to give the user the option to move, from watch list to watched (vice versa, or just remove it completely from either list!
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+switch(action.type) {
+        case "ADD_MOVIE_TO_WATCHLIST":
+            return {
+                ...state,
+                watchlist: [action.payload, ...state.watchlist]
+            }
+        case "ADD_MOVIE_TO_WATCHED":
+             return {
+                ...state,
+                 watchlist: state.watchlist.filter(
+                     (movie) => movie.id !== action.payload.id
+                   ),
+                    watched: [action.payload, ...state.watched],
+                }
+         case "REMOVE_FROM_WATCHED":
+               return {
+                    ...state,
+                    watched: state.watched.filter(movie => movie.id !== action.payload)
+                }
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Issues and Resolutions
+ I was having a major issue with local storage, it was terrible. Had to re-write it as an if else statement and use dot notation properly. I wasn't using dot notation properly originally in the line of code so it wasn't showing up in the local storage
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### SAMPLE.....
+**ERROR**:  Uncaught SyntaxError: Unexpected token 'o', "[object JSON]" is not valid JSON GlobalContext.js:7                              
+**RESOLUTION**: Added initialState.watchllist after if to equal Json.parse etc..., and after else same with initialState.watched
