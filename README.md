@@ -14,9 +14,6 @@ This app helps keep track of movies you are wanting to watch by giving you the a
 ## Wireframes & React Component Hierarchy
 
 - [Wireframes](https://whimsical.com/getting-started-boards-T8L9ob1vKmmxAvFVn3DW5e)
--  First wireframe is of the watch list page, here you will be able to find all the movies that are wanting to be watched
--  Second wireframe is of the watched page, here you will find all the movies you have already watched and moved from your watch list to the watched
--  Third wireframe is of the add page, here you will be able to search movies and add them to your watch list page or your watched page.  
 - [React Architecture](https://whimsical.com/getting-started-boards-T8L9ob1vKmmxAvFVn3DW5e)
 
 #### MVP EXAMPLE
