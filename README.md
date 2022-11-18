@@ -9,7 +9,7 @@ This app helps keep track of movies you are wanting to watch by giving you the a
 
 - [GitHub Repo](https://github.com/mobrewer/Movie-Tracker)
 - [Movie Tracker](https://movie-tracker-zakt-j68dvj4az-mobrewer.vercel.app/)
-- [Demo Recording](https://vimeo.com/772315652/04ee416b7b)
+- [Demo Recording](https://vimeo.com/772466056/9559c1a1d5)
 
 ## Wireframes & React Component Hierarchy
 
